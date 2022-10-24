@@ -1,0 +1,46 @@
+﻿@*@model ProductCategoryResponse*@
+@model ProductCategoryResponse
+
+@{
+    ViewBag.Title = "EditCategory";
+}
+
+<h2>EditCategory</h2>
+<br/>
+<br/>
+
+
+@using (Html.BeginForm("EditCategory", "Home", FormMethod.Post))
+{
+                <div class="">
+                    <span>@ViewBag.messageBox</span>
+                </div>
+
+            <label class="label-order">Product CategoryId</label>
+            @*<input asp-for = "@Model.ApplicationId" hidden type="text" class="order-input my-3">*@
+            @Html.EditorFor(model => model.Data.ProductCategoryID, new { htmlattributes = new { @class = "order-input my-3", @readonly = "readonly" } })
+            <br>
+            <br>
+
+            <label class="label-order">Category Name</label>
+            @Html.EditorFor(model => model.Data.Name, new { htmlattributes = new { @class = "order-input my-3" } })
+            <br>
+            <br>
+
+            <label class="label-order">Row Guid</label>
+            @Html.EditorFor(model => model.Data.rowguid, new { htmlattributes = new { @class = "order-input my-3", @readonly = "readonly" } })
+            <br>
+            <br>
+
+            <label class="label-order">Date Added</label>
+            @*<input asp-for="@Model.DateAdded" readonly type="date" class="order-input my-3">  *@
+            @Html.EditorFor(model => model.Data.ModifiedDate, new { htmlattributes = new { disabled = "disabled", @readonly = "readonly", @class = "order-input my-3", Value = Model.Data.ModifiedDate.ToString(format: "dd-mm-yyyy")
+            }
+        })
+            <br />
+            <br />
+
+            <label class="label-order"></label>
+            <input style="width: 10%;" type="submit" value="Update" class="btn btn-submit col-1" />
+ }
+        <!-- end of order form -->

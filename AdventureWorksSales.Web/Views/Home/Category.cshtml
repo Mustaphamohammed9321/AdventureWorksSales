@@ -1,0 +1,63 @@
+﻿
+@model GenericResponse
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Categorries</h2>
+<br />
+
+
+<div id="">
+    <div class="container">
+        <div class="mt-3">
+            @Html.ActionLink("AddCategory", "AddCategory", "Home")
+        </div>
+    </div><br />
+    <div class="text-danger text-center fw-bolder">
+        <span>@ViewBag.responseMessage</span>
+    </div>
+
+    <table id="ConcessionsTable" style="text-align:left;" class="table  mt-5 table-fullwidth posits-text shadow table-hover table-scroll">
+
+        <thead style="width:auto;">
+            <tr>
+                <th>#</th>
+                <th class="middle-order">@Html.DisplayName("Name")</th>
+                <th class="middle-order">@Html.DisplayName("Date Modified")</th>
+                <th class="middle-order">Action</th>
+            </tr>
+        </thead>
+
+        @{
+            int a = 0;
+        }
+        <tbody style="width:auto">
+            @foreach (var row in Model.Data)
+            {
+                <tr>
+                    <td style="">@(a = a + 1)</td>
+                    <td>@row.Name</td>
+                    <td>@row.ModifiedDate.ToShortDateString()</td>
+                    @*<td class="font-italic text-danger">@stat</td>*@
+                    <td>
+                        <select class="form-select dropdown-toggle" style="width:auto; height:auto" id="StudentGender" onchange="window.location.href = this.value;">
+                            <option class="text-center text-primary">...</option>
+                            <option value="@ViewBag.baseUrl/Home/EditCategory?ProductCategoryId=@row.ProductCategoryID">Edit</option>
+                        </select>
+                    </td>
+                    @*   <td>
+                        @Html.ActionLink("Edit", "EditService", new { @class = "text-primary", serviceId = row.ServiceId })
+                        </td>*@
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr class="odd"><td valign="top" class="py-3" style="background: #ffff 0% 0% no-repeat padding-box; border:none;" colspan="8"></td></tr>
+        </tfoot>
+    </table>
+</div>
+
+
+

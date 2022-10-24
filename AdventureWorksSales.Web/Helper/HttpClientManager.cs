@@ -163,8 +163,7 @@ namespace AdventureWorksSales.Web.Helper
                 //request.AddHeader("Content-Type", "application/json");
                 request.AddHeader("Accept", "application/json");
                 request.AddParameter("Name", productCategory.Name);
-
-                var response = await client.ExecuteAsync(request);
+                var response = await client.ExecutePostAsync(request);
 
                 if (response.IsSuccessStatusCode)
                 {
